@@ -1,0 +1,222 @@
+---
+import { Image } from 'astro:assets';
+import logoImg from '../../assets/img/LogoSemFundo.png';
+---
+
+<header class="cabecalho container" id="cabecalho">
+  <a href="/">
+    <Image 
+      src={logoImg} 
+      alt="Logo Santo Solar" 
+      class="logo" 
+      loading="eager"
+      fetchpriority="high"
+    />
+  </a>
+  
+  <nav class="cabecalho__nav">
+    <a href="/" class="cabecalho__link">Inicio</a>
+    <a href="#blog" class="cabecalho__link">Blog</a>
+    <a href="#rodape" class="cabecalho__link">Contato</a>
+    <a
+      href="https://wa.me/5531993600722"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="cabecalho__link cabecalho__wpp"
+    >
+      <i class="fa fa-wpp"></i> (31) 9 9360-0722
+    </a>
+  </nav>
+
+  {/* A interação de abrir/fechar menu mobile pode ser feita com um micro-script vanilla no final do arquivo */}
+  <nav class="cabecalho__navMobile">
+    <a href="https://wa.me/5531993600722" target="_blank" rel="noopener noreferrer" class="cabecalho__link cabecalho__wpp">
+      <i class="fa fa-wpp"></i>
+    </a>
+    <button class="cabecalho__navMobileMenu fa-menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile" id="btn-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="38" height="39" viewBox="0 0 38 39" fill="none">
+        <path d="M33.25 16.3334H4.75" stroke="#212969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M33.25 10H4.75" stroke="#212969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M33.25 22.6666H4.75" stroke="#212969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M33.25 29H4.75" stroke="#212969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <ul class="show-cabecalho__navMobile" id="menu-mobile" style="display: none; height: 0;">
+      <li><a href="/" class="cabecalho__link">Inicio</a></li>
+      <li><a href="#blog" class="cabecalho__link">Blog</a></li>
+      <li><a href="#rodape" class="cabecalho__link">Contato</a></li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  // Script puramente funcional e leve para o menu mobile (Astro client-side)
+  const btnMenu = document.getElementById('btn-menu');
+  const menuMobile = document.getElementById('menu-mobile');
+  let showMenu = false;
+
+  btnMenu?.addEventListener('click', () => {
+    showMenu = !showMenu;
+    btnMenu.setAttribute('aria-expanded', String(showMenu));
+    btnMenu.setAttribute('aria-label', showMenu ? 'Fechar menu' : 'Abrir menu');
+    if (showMenu && menuMobile) {
+      menuMobile.style.display = "flex";
+      setTimeout(() => menuMobile.style.height = "6rem", 10);
+    } else if (menuMobile) {
+      menuMobile.style.height = "0";
+      setTimeout(() => menuMobile.style.display = "none", 300);
+    }
+  });
+</script>
+
+<style>
+/* cabecalho-link.css */
+.cabecalho__link {
+  color: var(--var-cor-preto);
+  margin-left: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.2s all ease-in-out;
+}
+
+.cabecalho__link:hover:not(:last-child) {
+  color: var(--var-cor-laranja);
+}
+
+@media screen and (max-width: 900px) {
+  .cabecalho__link {
+    margin-left: 0.825rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cabecalho__link {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .cabecalho__link {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .cabecalho__link {
+    font-size: 0.75rem;
+  }
+}
+/* cabecalho-nav.css */
+@media screen and (max-width: 768px) {
+  .cabecalho__nav {
+    display: none;
+  }
+}
+/* cabecalho-navMobile.css */
+.cabecalho__navMobile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .cabecalho__navMobile {
+    display: flex;
+  }
+
+  .cabecalho__navMobileMenu {
+    margin-left: 1.5rem;
+  }
+
+  .show-cabecalho__navMobile {
+    display: none;
+    gap: 2.5rem;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 15vh;
+    left: 0;
+    list-style: none;
+    background: var(--var-cor-laranja);
+    width: 100%;
+    height: 0;
+    transition: 0.2s all ease-in-out;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .show-cabecalho__navMobile {
+    gap: 2rem;
+    height: 4rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .show-cabecalho__navMobile {
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .show-cabecalho__navMobile {
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (max-height: 740px) {
+  .show-cabecalho__navMobile {
+    position: absolute;
+    bottom: calc(100vh - 15vh);
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .show-cabecalho__navMobile {
+    position: absolute;
+    bottom: 0;
+    top: 30vh;
+  }
+}
+/* cabecalho-wpp.css */
+.cabecalho__wpp {
+  align-self: center;
+  background: #0FA958;
+  border-radius: 1.25rem;
+  color: var(--var-cor-branco);
+  padding: 0.4rem 1rem 0.6rem 1rem ;
+}
+
+@media screen and (max-width: 768px) {
+  .cabecalho__wpp {
+    border-radius: 1.25rem;
+    padding: 0.5rem 0.825rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .cabecalho__wpp {
+    padding: 0.5rem;
+  }
+}
+/* cabecalho.css */
+.cabecalho {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) { 
+    .cabecalho {
+        height: 15vh;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    .cabecalho {
+      height: 30vh;
+    }
+}
+</style>

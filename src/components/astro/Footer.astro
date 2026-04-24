@@ -1,0 +1,155 @@
+---
+import { Image } from 'astro:assets';
+import logoImg from '../../assets/img/LogoSemFundo.png';
+---
+
+<footer class="rodape" id="rodape">
+  <a href="/">
+    <Image src={logoImg} alt="Logo Santo Solar" class="logo" />
+  </a>
+  <section class="rodape__container">
+    <nav class="rodape__nav">
+      <a href="/" class="rodape__link">Inicio</a>
+      <a href="#blog" class="rodape__link">Blog</a>
+      <a href="#rodape" class="rodape__link">Contato</a>
+    </nav>
+    <div class="rodape__borda"></div>
+    <div class="rodape__contato">
+      <div>
+        <i class="fa fa-mail"></i>
+        <a href="mailto:contato@santosolar.com.br" class="rodape__email">contato@santosolar.com.br</a>
+      </div>
+      <div>
+        <i class="fa fa-tel"></i>
+        <a href="tel:+5531993600722" class="rodape__tel">55+ (31) 99360-0722</a>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="rodape__social">
+      <a href="https://www.instagram.com/santo.solar/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <i class="fa fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=100068795833695" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </div>
+    <div>
+      <p class="rodape__copy">
+        © Santo Solar 2023 - Todos os direitos reservados. CNPJ 39.945.709/0001-03
+      </p>
+    </div>
+  </section>
+</footer>
+
+<style>
+/* rodape-borda.css */
+.rodape__borda {
+  border-right: 2px solid var(--var-cor-branco);
+}
+
+@media screen and (max-width: 560px) {
+  .rodape__borda {
+    border-top: 1.5px solid var(--var-cor-branco);
+    border-right: 0;
+    width: 70%;
+  }
+}
+/* rodape-container.css */
+.rodape__container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 2rem;
+  width: 100%;
+  margin: 2rem 0 4rem 0;
+}
+
+@media screen and (max-width: 560px) {
+  .rodape__container {
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 1rem 0 3rem 0;
+  }
+}
+/* rodape-contato.css */
+.rodape__contato {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  width: 300px;
+}
+
+@media screen and (max-width: 560px) {
+  .rodape__contato {
+    text-align: center;
+  }
+}
+/* rodape-copy.css */
+.rodape__copy {
+  color: var(--var-cor-branco);
+  padding-bottom: 2rem;
+}
+
+@media screen and (max-width: 560px) {
+  .rodape__copy {
+    font-size: 0.875rem;
+    text-align: center;
+    padding-top: 1rem;
+  }
+}
+/* rodape-email.css */
+.rodape__email {
+  color: var(--var-cor-branco);
+  transition: 0.2s all ease-in-out;
+  text-decoration: none;
+  margin-left: 0.5rem;
+}
+/* rodape-link.css */
+.rodape__link {
+  color: var(--var-cor-branco);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.2s all ease-in-out;
+}
+
+.rodape__link:hover {
+  color: var(--var-cor-laranja);
+}
+/* rodape-nav.css */
+.rodape__nav {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 300px;
+}
+/* rodape-social.css */
+.rodape__social {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+/* rodape-tel.css */
+.rodape__tel {
+  color: var(--var-cor-branco);
+  transition: 0.2s all ease-in-out;
+  text-decoration: none;
+  margin-left: 0.5rem;
+}
+/* rodape.css */
+.rodape {
+  background: linear-gradient(
+      0deg,
+      rgba(30, 38, 109, 0.85) 0%,
+      rgba(30, 38, 109, 0.85) 100%
+    ),
+    url('../../assets/img/bgRodape.png') center / cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0 0 0;
+}
+
+</style>

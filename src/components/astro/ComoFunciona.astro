@@ -1,0 +1,48 @@
+---
+// Componente demonstrativo "Como Funciona a Energia Solar"
+import { Image } from 'astro:assets';
+import comoFuncionaImg from '../../assets/img/ComoFuncionaAEnergiaSolar.png';
+---
+
+<section class="comoFunciona container" id="comoFunciona">
+  <h2 class="comoFunciona__titulo tituloH2" style="text-align: center; margin-bottom: 2.5rem; color: var(--var-cor-azul);">Como Funciona</h2>
+  
+  <div class="comoFunciona__imagem-wrapper">
+    <Image 
+      src={comoFuncionaImg} 
+      alt="Diagrama visual de como funciona o sistema de energia solar" 
+      class="comoFunciona__img"
+      loading="lazy"
+    />
+  </div>
+</section>
+
+<style>
+.comoFunciona {
+  margin: 4rem auto 6rem auto;
+}
+
+.comoFunciona__imagem-wrapper {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.comoFunciona__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+  .comoFunciona {
+    margin: 2rem auto 4rem auto;
+  }
+  .comoFunciona__titulo {
+    font-size: 2rem;
+  }
+}
+</style>

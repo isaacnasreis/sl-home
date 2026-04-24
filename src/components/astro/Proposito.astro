@@ -1,0 +1,58 @@
+---
+// Componente de Vídeo do Propósito da Empresa
+---
+<section class="proposito container" id="proposito">
+  <h2 class="tituloH2" style="text-align: center; margin-bottom: 2rem; color: var(--var-cor-azul);">Nosso Propósito</h2>
+  <div class="proposito__video-wrapper">
+    <iframe
+      loading="lazy"
+      class="proposito__iframe"
+      src="https://www.canva.com/design/DAFqN55GYBw/aFAU3nQyKRkK73San8VvLw/watch?embed"
+      allowfullscreen="allowfullscreen"
+      allow="fullscreen"
+      title="Vídeo institucional: Nosso Propósito - Santo Solar"
+    >
+    </iframe>
+  </div>
+</section>
+
+<style>
+.proposito {
+  margin: 4rem auto 6rem auto;
+}
+
+.proposito__video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 45%; /* Aspect ratio específico do vídeo original do Canva */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #000;
+  transition: transform 0.3s ease;
+}
+
+.proposito__video-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+.proposito__iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .proposito {
+    margin: 3rem auto;
+  }
+  .proposito__video-wrapper {
+    padding-top: 56.25%; /* Em telas menores, um aspect ratio 16:9 tradicional encaixa melhor */
+  }
+}
+</style>

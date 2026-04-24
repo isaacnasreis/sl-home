@@ -1,0 +1,34 @@
+.modalProjetos-container {
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.modalProjetos {
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--var-cor-branco);
+  border-radius: 0.625rem;
+  z-index: 2;
+  -webkit-box-shadow: 25px 17px 300px 200px rgba(0,0,0,0.66);
+  -moz-box-shadow: 25px 17px 300px 200px rgba(0,0,0,0.66);
+  box-shadow: 25px 17px 300px 200px rgba(0,0,0,0.66);
+  transition: all 0.2s ease-in-out;
+  
+}
+
+@media screen and (max-width: 560px) {
+  .modalProjetos {
+    height: auto;
+  }
+}

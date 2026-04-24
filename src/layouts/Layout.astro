@@ -1,0 +1,96 @@
+---
+import SEO from '../components/astro/SEO.astro';
+
+// Importação dos estilos globais base (reset, variáveis, fontes)
+import '../assets/css/style.css';
+import '../assets/css/base.css';
+import '../assets/css/icons.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <SEO title={title} description={description} />
+    
+    <!-- Google Fonts — Carregamento não-bloqueante -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Inter:wght@400;500;600&display=swap"
+    />
+    <script is:inline>
+      // Injeta stylesheet de fontes de forma assíncrona (não bloqueia renderização)
+      (function(){
+        var f=document.createElement('link');
+        f.rel='stylesheet';
+        f.href='https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Inter:wght@400;500;600&display=swap';
+        document.head.appendChild(f);
+      })();
+    </script>
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    </noscript>
+  </head>
+  <body>
+    <slot />
+
+    <!-- Script global: Submissão AJAX de formulários com feedback visual -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function() {
+        // ── WhatsApp CTA: Todos os botões .send-whatsapp ──
+        document.querySelectorAll('.send-whatsapp').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            var phone = this.getAttribute('data-phone');
+            var msg = encodeURIComponent(this.getAttribute('data-message') || '');
+            window.open('https://wa.me/' + phone + '?text=' + msg, '_blank');
+          });
+        });
+
+        // ── Formulários AJAX com feedback visual ──
+        var forms = document.querySelectorAll('[data-form-orcamento],[data-form-duvidas],[data-form-newsletter]');
+        forms.forEach(function(form) {
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var btn = form.querySelector('button[type="submit"]');
+            var textoOriginal = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Enviando...';
+
+            var dados = {};
+            var campos = form.querySelectorAll('[name]');
+            campos.forEach(function(c) { dados[c.name] = c.value; });
+
+            fetch(form.action, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify(dados)
+            }).then(function(res) {
+              if (!res.ok) throw new Error('Erro');
+              btn.textContent = '✓ Enviado com sucesso!';
+              btn.classList.add('botao--sucesso');
+              form.reset();
+            }).catch(function() {
+              btn.textContent = '✗ Erro ao enviar';
+              btn.classList.add('botao--erro');
+            }).finally(function() {
+              setTimeout(function() {
+                btn.textContent = textoOriginal;
+                btn.classList.remove('botao--sucesso', 'botao--erro');
+                btn.disabled = false;
+              }, 3000);
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

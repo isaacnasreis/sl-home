@@ -1,0 +1,26 @@
+{
+  "name": "santo-solar",
+  "author": "Isaac N Reis <isaacreisn@gmail.com>",
+  "repository": "https://github.com/isaacnasreis/sl-home",
+  "de scription": "Home page for Santo Solar",
+  "license": "MIT",
+  "type": "module",
+  "version": "2.0.0",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^5.0.4",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^6.1.9",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  }
+}

@@ -1,0 +1,204 @@
+---
+// Componente de Newsletter estático e com atributos ARIA e labels corretos.
+---
+
+<section class="newsletter container" aria-labelledby="newsletter-title">
+  <div>
+    <p class="newsletter__anuncio">Santo Solar</p>
+    <p class="newsletter__anuncio">
+      Energia fotovoltaica ao seu alcance
+    </p>
+  </div>
+  <div class="newsletter__container">
+    <h2 class="newsletter__titulo tituloH2" id="newsletter-title">Assine nossa Newsletter</h2>
+    <p class="newsletter__descricao">
+      Inscreva-se para receber novidades.
+    </p>
+  </div>
+  
+  <form
+    class="newsletter__form"
+    action="https://formsubmit.co/ajax/contato@santosolar.com.br"
+    method="POST"
+    data-form-newsletter
+    aria-label="Formulário de inscrição na newsletter"
+  >
+    {/* Adicionando aria-label e IDs consistentes para melhorar acessibilidade */}
+    <label for="nomeNewsletter" class="sr-only">Nome Completo</label>
+    <input
+      id="nomeNewsletter"
+      name="nomeNewsletter"
+      type="text"
+      placeholder="Nome"
+      required
+      aria-required="true"
+    />
+    
+    <label for="emailNewsletter" class="sr-only">Endereço de E-mail</label>
+    <input
+      id="emailNewsletter"
+      name="emailNewsletter"
+      type="email"
+      placeholder="Email"
+      required
+      aria-required="true"
+    />
+    
+    <button
+      type="submit"
+      class="botao newsletter__botao"
+      data-button-newsletter
+      aria-label="Enviar inscrição da newsletter"
+    >
+      Enviar
+    </button>
+  </form>
+</section>
+
+<style>
+/* newsletter-anuncio.css */
+.newsletter__anuncio {
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal; 
+}
+
+@media screen and (max-width: 1290px) {
+  .newsletter__anuncio {
+    font-size: 2.5rem;
+    font-weight: 300;
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .newsletter__anuncio {
+    font-size: 2.25rem;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .newsletter__anuncio:first-child {
+    font-size: 2rem;
+    font-weight: 700;
+    width: 100%;
+  }
+
+  .newsletter__anuncio:last-child {
+    font-size: 1.5rem;
+    font-weight: 400;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+}
+/* newsletter-botao.css */
+@media screen and (max-width: 560px) {
+  .newsletter__botao {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+}
+/* newsletter-container.css */
+.newsletter__container {
+  border-top: 2px solid var(--var-cor-branco);
+  margin: 1rem auto;
+  padding-top: 1rem;
+  width: 50%;
+}
+
+@media screen and (max-width: 1290px) {
+  .newsletter__container {
+    margin: 2rem auto;
+    padding-top: 2rem;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .newsletter__container {
+    margin: 2rem auto;
+    padding-top: 2rem;
+    width: 100%;
+  }
+}
+/* newsletter-descricao.css */
+.newsletter__descricao {
+  font-size: 1.5rem;
+  font-style: normal;
+  line-height: normal;
+}
+
+@media screen and (max-width: 900px) {
+  .newsletter__descricao {
+    font-size: 1.25rem;
+  }
+}
+
+/* newsletter-form.css */
+.newsletter__form input {
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-full);
+  margin-right: 1.5rem;
+  flex: 1;
+}
+
+@media screen and (max-width: 1290px) {
+  .newsletter__form input {
+    padding: 1rem 6rem 1rem 1rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .newsletter__form input {
+    padding: 1rem 2rem 1rem 1rem;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .newsletter__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .newsletter__form input {
+    text-align: center;
+    margin: 0;
+    width: 80%;
+    padding: 1rem;
+  }
+}
+/* newsletter-titulo.css */
+.newsletter__titulo {
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal; 
+}
+
+@media screen and (max-width: 900px) {
+  .newsletter__titulo {
+    font-size: 1.825rem;
+    font-weight: 500;
+  }
+}
+/* newsletter.css */
+.newsletter {
+  background: linear-gradient(
+      0deg,
+      rgba(30, 38, 109, 0.85) 0%,
+      rgba(30, 38, 109, 0.85) 100%
+    ),
+    url('../../assets/img/bgNew.jpeg') center / cover no-repeat;
+  color: var(--var-cor-branco);
+  text-align: center;
+  padding: 6rem 1rem;
+}
+
+</style>

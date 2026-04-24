@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/astro/Header.astro';
+import Hero from '../components/astro/Hero.astro';
+import Services from '../components/astro/Services.astro';
+import Simulador from '../components/react/Simulador';
+import FAQ from '../components/astro/FAQ.astro';
+import Newsletter from '../components/astro/Newsletter.astro';
+import Orcamento from '../components/astro/Orcamento.astro';
+import Footer from '../components/astro/Footer.astro';
+import Proposito from '../components/astro/Proposito.astro';
+import ComoFunciona from '../components/astro/ComoFunciona.astro';
+
+// Aqui poderíamos importar outros componentes menores se estivessem prontos:
+import Projetos from '../components/react/Projetos';
+import DepoimentosSlider from '../components/react/DepoimentosSlider';
+import whatsappIcon from '../assets/img/whatsapp-icone.svg';
+
+// Importa os dados em build-time para performance ótima (evita fetch no cliente)
+import projetosData from '../../public/assets/db/projetos.json';
+import depoimentosData from '../../public/assets/db/depoimentos.json';
+---
+
+<Layout title="Santo Solar - Energia Solar ao seu alcance">
+  <Header />
+
+  <main>
+    <Hero />
+
+    {/* Seção Links Rápidos Simplificada */}
+    <section class="links container">
+      <div class="links__card">
+        <i class="icon-cifrao fa"></i>
+        <h3 class="links__titulo">Simulador</h3>
+        <a href="#simulador" class="botao">Veja mais</a>
+      </div>
+      <div class="links__card">
+        <i class="icon-cafe fa"></i>
+        <h3 class="links__titulo">Blog</h3>
+        <span>Em Breve</span>
+      </div>
+      <div class="links__card">
+        <i class="icon-ferramenta fa"></i>
+        <h3 class="links__titulo">Serviços</h3>
+        <a href="#servicos" class="botao">Veja mais</a>
+      </div>
+    </section>
+
+    <hr class="separator" />
+
+    <Proposito />
+
+    <ComoFunciona />
+
+    <Services />
+
+    <Projetos client:visible projetos={projetosData.projetos} />
+
+    <DepoimentosSlider client:visible depoimentos={depoimentosData.depoimentos} />
+
+    {/* Aqui inserimos a nossa "Ilha React" principal hidratando o client */}
+    <Simulador client:visible />
+
+    <FAQ />
+
+    <Newsletter />
+
+    <Orcamento />
+  </main>
+
+  <Footer />
+
+  {/* Botão Flutuante do WhatsApp */}
+  <div class="whatsappBotaoFlutuante">
+    <a href="https://wa.me/5531993600722" target="_blank" rel="noopener noreferrer" aria-label="Iniciar conversa no WhatsApp">
+      <img src={whatsappIcon.src} alt="ícone whatsapp" width="56" height="56" />
+    </a>
+    <a href="#cabecalho" aria-label="Voltar ao topo">
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M41 12L22.5 30.5L41 49" stroke="#212969" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+  </div>
+</Layout>
