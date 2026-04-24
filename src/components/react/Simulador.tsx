@@ -164,7 +164,12 @@ export default function Simulador() {
                 <p className={styles.valorDestaqueVerde}>{formatCurrency(resultado.economiaAnual)}</p>
               </div>
             </div>
-            <a href="https://wa.me/5531993600722" target="_blank" rel="noopener noreferrer" className={`botao ${styles.modalSimuladorResultado__botao}`}>
+            <a 
+              href={`https://wa.me/5531993600722?text=Olá!%20Meu%20nome%20é%20${nome}.%20Fiz%20uma%20simulação%20no%20site%20e%20vi%20que%20posso%20economizar%20${formatCurrency(resultado.economiaAnual)}%20por%20ano.%20Gostaria%20de%20um%20orçamento%20detalhado.`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={`botao ${styles.modalSimuladorResultado__botao}`}
+            >
               Entre em contato pelo Whatsapp
             </a>
           </section>
