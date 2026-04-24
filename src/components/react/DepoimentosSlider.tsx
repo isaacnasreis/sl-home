@@ -38,10 +38,10 @@ export default function DepoimentosSlider({ depoimentos }: DepoimentosSliderProp
           </svg>
         </button>
         
-        <div className={styles.depoimento} aria-live="polite" aria-atomic="true">
-          <blockquote>"{depoimentos[indiceAtivo].mensagem}"</blockquote>
-          <img src={starsIcon.src} alt="Ícones de cinco estrelas" width="15%" />
-          <p>{depoimentos[indiceAtivo].nome}</p>
+        <div key={indiceAtivo} className={styles.depoimento} aria-live="polite" aria-atomic="true">
+          <blockquote className={styles.depoimento__texto}>"{depoimentos[indiceAtivo].mensagem}"</blockquote>
+          <img src={starsIcon.src} alt="Ícones de cinco estrelas" className={styles.depoimento__estrelas} />
+          <p className={styles.depoimento__autor}>{depoimentos[indiceAtivo].nome}</p>
         </div>
 
         <button className={styles['seta-direita']} onClick={next} aria-label="Próximo depoimento">

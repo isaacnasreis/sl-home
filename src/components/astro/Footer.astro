@@ -36,7 +36,9 @@ import logoImg from '../../assets/img/LogoSemFundo.png';
     </div>
     <div>
       <p class="rodape__copy">
-        © Santo Solar 2023 - Todos os direitos reservados. CNPJ 39.945.709/0001-03
+        © Santo Solar 2026 - Todos os direitos reservados. CNPJ 39.945.709/0001-03
+        <br />
+        Desenvolvido por <a href="https://isaacnasreis.github.io/portfolio-js/" target="_blank" rel="noopener noreferrer">Isaac N. Reis</a>
       </p>
     </div>
   </section>
@@ -90,6 +92,19 @@ import logoImg from '../../assets/img/LogoSemFundo.png';
 .rodape__copy {
   color: var(--var-cor-branco);
   padding-bottom: 2rem;
+  text-align: center;
+}
+
+.rodape__copy a {
+  color: var(--var-cor-amarelo, #ffcc00);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition, 0.3s);
+}
+
+.rodape__copy a:hover {
+  color: var(--var-cor-laranja, #ff9900);
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 560px) {

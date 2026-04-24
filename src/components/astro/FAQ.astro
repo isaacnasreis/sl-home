@@ -11,50 +11,75 @@
       <details class="duvidas__caixa" open={false}>
         <summary class="duvidas__pergunta">
           Posso compensar os créditos de energia em outro endereço?
+          <span class="duvidas__icone"></span>
         </summary>
-        <p class="duvidas__resposta">
-          R: Podem sim, desde que os imóveis estejam todos no mesmo CPF ou CNPJ.
-        </p>
+        <div class="duvidas__resposta-wrapper">
+          <div class="duvidas__resposta-content">
+            <p class="duvidas__resposta">
+              Podem sim, desde que os imóveis estejam todos no mesmo CPF ou CNPJ.
+            </p>
+          </div>
+        </div>
       </details>
       
       <details class="duvidas__caixa" open={false}>
         <summary class="duvidas__pergunta">
           Quanto posso economizar na conta de energia?
+          <span class="duvidas__icone"></span>
         </summary>
-        <p class="duvidas__resposta">
-          R: É possível economizar até 95% do custo da fatura. Com a geração paga-se apenas
-          algumas taxas como a taxa de disponibilidade e a taxa de iluminação pública.
-        </p>
+        <div class="duvidas__resposta-wrapper">
+          <div class="duvidas__resposta-content">
+            <p class="duvidas__resposta">
+              É possível economizar até 95% do custo da fatura. Com a geração paga-se apenas
+              algumas taxas como a taxa de disponibilidade e a taxa de iluminação pública.
+            </p>
+          </div>
+        </div>
       </details>
       
       <details class="duvidas__caixa" open={false}>
         <summary class="duvidas__pergunta">
           Qual a durabilidade do sistema?
+          <span class="duvidas__icone"></span>
         </summary>
-        <p class="duvidas__resposta">
-          R: O sistema fotovoltaico tem vida útil de 25 a 30 anos, mas com a manutenção 
-          correta pode durar muito mais.
-        </p>
+        <div class="duvidas__resposta-wrapper">
+          <div class="duvidas__resposta-content">
+            <p class="duvidas__resposta">
+              O sistema fotovoltaico tem vida útil de 25 a 30 anos, mas com a manutenção 
+              correta pode durar muito mais.
+            </p>
+          </div>
+        </div>
       </details>
       
       <details class="duvidas__caixa" open={false}>
         <summary class="duvidas__pergunta">
           É possível financiar o sistema?
+          <span class="duvidas__icone"></span>
         </summary>
-        <p class="duvidas__resposta">
-          R: Sim, atualmente existem diversas linhas de financiamento onde as parcelas 
-          ficam igual ou menor ou valor da conta de energia.
-        </p>
+        <div class="duvidas__resposta-wrapper">
+          <div class="duvidas__resposta-content">
+            <p class="duvidas__resposta">
+              Sim, atualmente existem diversas linhas de financiamento onde as parcelas 
+              ficam igual ou menor ou valor da conta de energia.
+            </p>
+          </div>
+        </div>
       </details>
       
       <details class="duvidas__caixa" open={false}>
         <summary class="duvidas__pergunta">
           O sistema de energia solar funciona durante dias nublados ou chuvosos?
+          <span class="duvidas__icone"></span>
         </summary>
-        <p class="duvidas__resposta">
-          R: Sim, mesmo em dias nublados ou chuvosos o sistema continua gerando, porém 
-          com uma pequena redução.
-        </p>
+        <div class="duvidas__resposta-wrapper">
+          <div class="duvidas__resposta-content">
+            <p class="duvidas__resposta">
+              Sim, mesmo em dias nublados ou chuvosos o sistema continua gerando, porém 
+              com uma pequena redução.
+            </p>
+          </div>
+        </div>
       </details>
     </div>
 
@@ -121,29 +146,74 @@
 }
 /* duvidas-caixa.css */
 .duvidas__caixa {
-  background: #D9D9D9;
-  border-radius: 1.25rem;
-  text-align: center;
-  vertical-align: middle;
-  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 1rem;
+  padding: 0;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: var(--transition);
+  overflow: hidden;
 }
 
-@media screen and (max-width: 1290px) {
-  .duvidas__caixa {
-    padding: 1.5rem 1rem;
-  }
+.duvidas__caixa:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  background: var(--var-cor-branco);
 }
 
-@media screen and (max-width: 1024px) {    
-  .duvidas__caixa {
-    padding: 1.5rem 1rem;
-  }
+.duvidas__caixa[open] {
+  background: var(--var-cor-branco);
+  box-shadow: var(--shadow-sm);
 }
 
-@media screen and (max-width: 900px) {
-  .duvidas__caixa {
-    padding: 1rem;
-  }
+.duvidas__pergunta {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.25rem 1.5rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  color: var(--var-cor-azul);
+  transition: var(--transition);
+}
+
+.duvidas__pergunta::-webkit-details-marker {
+  display: none;
+}
+
+.duvidas__icone {
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23212969'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.3s ease;
+}
+
+.duvidas__caixa[open] .duvidas__icone {
+  transform: rotate(180deg);
+}
+
+.duvidas__resposta-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease-out;
+}
+
+.duvidas__caixa[open] .duvidas__resposta-wrapper {
+  grid-template-rows: 1fr;
+}
+
+.duvidas__resposta-content {
+  overflow: hidden;
+}
+
+.duvidas__resposta {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  color: #4a4a4a;
+  line-height: 1.6;
+  text-align: left;
 }
 /* duvidas-container.css */
 .duvidas__container {

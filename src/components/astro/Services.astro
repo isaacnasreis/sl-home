@@ -63,8 +63,9 @@ import imgOM from '../../assets/img/om.jpg';
 <style>
 /* servico-botao.css */
 .servico__botao {
-  margin: 1.825rem 0.5rem 0 0.5rem;
+  margin: auto 0.5rem 0 0.5rem;
   font-size: 1.25rem;
+  align-self: center;
 }
 
 @media screen and (max-width: 1290px) {
@@ -130,6 +131,7 @@ import imgOM from '../../assets/img/om.jpg';
   list-style-position: inside;
   padding: 0 1.5rem;
   margin: 0 auto;
+  flex-grow: 1;
 }
 
 @media screen and (max-width: 1290px) {
@@ -156,6 +158,11 @@ import imgOM from '../../assets/img/om.jpg';
 /* servico-titulo.css */
 .servico__titulo {
   color: var(--var-cor-amarelo);
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
 }
 
 @media screen and (max-width: 1290px) {

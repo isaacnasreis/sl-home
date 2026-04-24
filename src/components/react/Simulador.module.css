@@ -1,7 +1,7 @@
 /* simulador.css */
 .simulador {
   align-items: center;
-  background: linear-gradient(0deg, rgba(18, 25, 83, 0.9) 0%, rgba(18, 25, 83, 0.9) 100%), url('../../assets/img/bgSimulador.jpg') center / cover no-repeat;
+  background: linear-gradient(0deg, rgba(18, 25, 83, 0.6) 0%, rgba(18, 25, 83, 0.9) 100%), url('../../assets/img/bgSimulador.webp') center / cover no-repeat;
   color: var(--var-cor-branco);
   display: flex;
   flex-direction: column;
@@ -139,6 +139,15 @@
 
 #nomeSimulador::placeholder {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.simulador__input__text {
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-sm);
+  outline: none;
+  transition: border-color 0.3s;
 }
 
 .simulador__termos {

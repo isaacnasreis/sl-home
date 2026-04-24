@@ -37,7 +37,7 @@ export default function Simulador() {
           Simule agora para saber quanto você pode economizar utilizando a energia solar
         </p>
         <form className={styles.simulador__form} onSubmit={handleSubmit}>
-          
+
           <div className={styles.simulador__inputGroup}>
             <div className={styles.simulador__inputHeader}>
               <label htmlFor="valorPago" className={styles.simulador__label}>Valor pago atualmente:</label>
@@ -116,6 +116,7 @@ export default function Simulador() {
           <div className={styles.simulador__input}>
             <label htmlFor="nomeSimulador" className={styles.simulador__label}>Nome</label>
             <input
+              className={styles.simulador__input__text}
               type="text"
               id="nomeSimulador"
               placeholder="Nome Completo"
@@ -143,14 +144,14 @@ export default function Simulador() {
               <h2>Olá {nome}, excelente escolha!</h2>
               <p>Aqui estão os valores que você pode economizar. Não perca tempo, comece a gerar sua própria energia!</p>
             </div>
-              
+
             <div className={styles.modalSimuladorResultado__grid}>
               <div className={styles.resultadoCard}>
                 <div className={styles.resultadoCard__icon}>⚡</div>
                 <p className={styles.resultadoCard__label}>Nova Fatura Estimada</p>
                 <p className={styles.valorDestaque}>{formatCurrency(resultado.novoValorFatura)}</p>
               </div>
-              
+
               <div className={styles.resultadoCard}>
                 <div className={styles.resultadoCard__icon}>💰</div>
                 <p className={styles.resultadoCard__label}>Economia Mensal</p>
