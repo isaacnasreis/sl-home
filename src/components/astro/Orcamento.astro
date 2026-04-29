@@ -12,6 +12,9 @@
     data-form-orcamento
     aria-label="Formulário de solicitação de orçamento"
   >
+    {/* F-03: Honeypot anti-spam — campo oculto para bots */}
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+    <input type="hidden" name="_captcha" value="false" />
     <div class="orcamento__formInputContainer">
       <label for="nomeOrcamento" class="sr-only">Nome Completo</label>
       <input

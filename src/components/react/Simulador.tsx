@@ -165,9 +165,10 @@ export default function Simulador() {
               </div>
             </div>
             <a 
-              href={`https://wa.me/5531993600722?text=Olá!%20Meu%20nome%20é%20${nome}.%20Fiz%20uma%20simulação%20no%20site%20e%20vi%20que%20posso%20economizar%20${formatCurrency(resultado.economiaAnual)}%20por%20ano.%20Gostaria%20de%20um%20orçamento%20detalhado.`} 
+              href={`https://wa.me/5531993600722?text=${encodeURIComponent(`Olá! Meu nome é ${nome}. Fiz uma simulação no site e vi que posso economizar ${formatCurrency(resultado.economiaAnual)} por ano. Gostaria de um orçamento detalhado.`)}`}
               target="_blank" 
-              rel="noopener noreferrer" 
+              rel="noopener noreferrer nofollow"
+              referrerPolicy="no-referrer"
               className={`botao ${styles.modalSimuladorResultado__botao}`}
             >
               Entre em contato pelo Whatsapp

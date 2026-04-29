@@ -1,0 +1,43 @@
+/*
+  ══════════════════════════════════════════════
+  Security Headers — Santo Solar
+  Compatível com: Netlify, Vercel (via rewrites),
+                  Cloudflare Pages, etc.
+  ══════════════════════════════════════════════
+*/
+
+/*
+  Aplica os cabeçalhos de segurança a TODAS as rotas
+*/
+/*
+  Content-Security-Policy (CSP):
+  - default-src 'self'            → só permite recursos da própria origem
+  - script-src 'self' 'unsafe-inline' → permite scripts inline do Astro
+  - style-src 'self' 'unsafe-inline' fonts.googleapis.com → CSS do Google Fonts
+  - font-src 'self' fonts.gstatic.com → arquivos de fonte
+  - img-src 'self' data: https:   → imagens da própria origem + externas por HTTPS
+  - connect-src 'self' https://formsubmit.co → permite AJAX para o FormSubmit
+  - frame-ancestors 'none'        → bloqueia Clickjacking
+  - form-action 'self' https://formsubmit.co → restringe destinos de formulários
+  - base-uri 'self'               → bloqueia injeção de base href
+  - object-src 'none'             → bloqueia Flash e plugins legados
+*/
+/assets/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+
+/*
+  X-Frame-Options: DENY              → bloqueia Clickjacking
+  X-Content-Type-Options: nosniff   → bloqueia MIME-type sniffing
+  X-XSS-Protection: 0               → desativa proteção legada (CSP é mais seguro)
+  Referrer-Policy: strict-origin-when-cross-origin → reduz vazamento de URL
+  Permissions-Policy: ... → desabilita APIs do browser não utilizadas
+*/
+/
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 0
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co; frame-ancestors 'none'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'

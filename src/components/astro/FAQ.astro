@@ -96,7 +96,9 @@
         data-form-duvidas
         aria-label="Formulário de dúvidas"
       >
-        <label for="nomeDuvidas" class="sr-only">Nome</label>
+        {/* F-03: Honeypot anti-spam — campo oculto para bots */}
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+        <input type="hidden" name="_captcha" value="false" />
         <input id="nomeDuvidas" name="nomeDuvidas" type="text" placeholder="Nome" required aria-required="true" />
         
         <label for="emailDuvidas" class="sr-only">Email</label>

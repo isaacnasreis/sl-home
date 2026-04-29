@@ -23,7 +23,9 @@
     data-form-newsletter
     aria-label="Formulário de inscrição na newsletter"
   >
-    {/* Adicionando aria-label e IDs consistentes para melhorar acessibilidade */}
+    {/* F-03: Honeypot anti-spam — campo oculto para bots */}
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+    <input type="hidden" name="_captcha" value="false" />
     <label for="nomeNewsletter" class="sr-only">Nome Completo</label>
     <input
       id="nomeNewsletter"

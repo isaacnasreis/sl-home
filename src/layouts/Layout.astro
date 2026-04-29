@@ -49,9 +49,11 @@ const { title, description } = Astro.props;
         // ── WhatsApp CTA: Todos os botões .send-whatsapp ──
         document.querySelectorAll('.send-whatsapp').forEach(function(btn) {
           btn.addEventListener('click', function() {
-            var phone = this.getAttribute('data-phone');
+            var phone = this.getAttribute('data-phone') || '';
+            // F-04: Valida que o phone contém apenas dígitos antes de usar
+            if (!/^\d{10,15}$/.test(phone)) return;
             var msg = encodeURIComponent(this.getAttribute('data-message') || '');
-            window.open('https://wa.me/' + phone + '?text=' + msg, '_blank');
+            window.open('https://wa.me/' + phone + '?text=' + msg, '_blank', 'noopener,noreferrer');
           });
         });
 
