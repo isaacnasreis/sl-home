@@ -1,0 +1,89 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/astro/Header.astro';
+import Footer from '../../components/astro/Footer.astro';
+import BlogCard from '../../components/astro/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout title="Blog | Santo Solar">
+  <Header />
+
+  <main class="blog-page">
+    <section class="blog-header container">
+      <h1 class="tituloH2">Nosso <span style="color: var(--var-cor-amarelo)">Blog</span></h1>
+      <p>Fique por dentro das últimas novidades sobre energia solar, economia e sustentabilidade.</p>
+    </section>
+
+    <section class="blog-list container">
+      {sortedPosts.length > 0 ? (
+        <div class="blog-grid">
+          {sortedPosts.map(post => (
+            <BlogCard post={post} />
+          ))}
+        </div>
+      ) : (
+        <div class="blog-empty">
+          <h2>Em breve novos conteúdos!</h2>
+          <p>Ainda não publicamos nenhum artigo. Volte em breve para mais novidades.</p>
+        </div>
+      )}
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .blog-page {
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+    min-height: 80vh;
+  }
+  .blog-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .blog-header p {
+    font-size: 1.125rem;
+    color: #555;
+    margin-top: 1rem;
+    max-width: 600px;
+    margin-inline: auto;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+  .blog-empty {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+  .blog-empty h2 {
+    font-family: 'Outfit', sans-serif;
+    color: var(--var-cor-azul);
+    margin-bottom: 1rem;
+  }
+  
+  @media screen and (max-width: 1024px) {
+    .blog-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .blog-page {
+      padding-top: 6rem;
+    }
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
