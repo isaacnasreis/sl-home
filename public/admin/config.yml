@@ -1,0 +1,30 @@
+backend:
+  name: github
+  repo: isaacnasreis/sl-home
+  branch: main
+  use_pkce: true
+  app_id: Ov23liGlQjcuUqd2BSZR
+
+media_folder: "public/images/blog"
+public_folder: "/images/blog"
+
+site_url: https://santosolar.com.br
+display_url: https://santosolar.com.br
+logo_url: https://santosolar.com.br/assets/img/logo.svg
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "mdoc"
+    format: "frontmatter"
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Resumo", name: "summary", widget: "text", required: false}
+      - {label: "Data de Publicação", name: "pubDate", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false}
+      - {label: "Imagem de Capa", name: "coverImage", widget: "image", required: false}
+      - {label: "Categorias", name: "categories", widget: "list", required: false, default: ["Geral"]}
+      - {label: "Tags", name: "tags", widget: "list", required: false, default: ["Energia Solar"]}
+      - {label: "Conteúdo", name: "body", widget: "markdown"}

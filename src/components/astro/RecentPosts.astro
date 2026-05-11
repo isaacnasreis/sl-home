@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+import BlogCard from './BlogCard.astro';
+
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const recentPosts = sortedPosts.slice(0, 3);
+---
+
+<section id="blog-recent" class="recent-posts container">
+  <div class="recent-posts__header">
+    <h2 class="tituloH2">Últimos <span style="color: var(--var-cor-amarelo)">Artigos</span></h2>
+    <p>Acompanhe as novidades e dicas sobre energia solar em nosso blog.</p>
+  </div>
+  
+  {recentPosts.length > 0 ? (
+    <div class="recent-posts__grid">
+      {recentPosts.map(post => (
+        <BlogCard post={post} />
+      ))}
+    </div>
+  ) : (
+    <div class="recent-posts__empty">
+      <p>Em breve publicaremos novos artigos.</p>
+    </div>
+  )}
+
+  <div class="recent-posts__footer">
+    <a href="/blog" class="botao botao-outline">Acessar o Blog</a>
+  </div>
+</section>
+
+<style>
+  .recent-posts {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  .recent-posts__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .recent-posts__header p {
+    margin-top: 1rem;
+    color: #555;
+    font-size: 1.1rem;
+  }
+  .recent-posts__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .recent-posts__empty {
+    text-align: center;
+    padding: 3rem;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    color: #666;
+  }
+  .recent-posts__footer {
+    margin-top: 3rem;
+    text-align: center;
+  }
+  .botao-outline {
+    border: 2px solid var(--var-cor-amarelo);
+    color: var(--var-cor-azul);
+  }
+
+  @media screen and (max-width: 1024px) {
+    .recent-posts__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .recent-posts__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

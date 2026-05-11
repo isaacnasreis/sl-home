@@ -10,6 +10,7 @@ import Orcamento from '../components/astro/Orcamento.astro';
 import Footer from '../components/astro/Footer.astro';
 import Proposito from '../components/astro/Proposito.astro';
 import ComoFunciona from '../components/astro/ComoFunciona.astro';
+import RecentPosts from '../components/astro/RecentPosts.astro';
 
 // Aqui poderíamos importar outros componentes menores se estivessem prontos:
 import Projetos from '../components/react/Projetos';
@@ -37,7 +38,7 @@ import depoimentosData from '../../public/assets/db/depoimentos.json';
       <div class="links__card">
         <i class="icon-cafe fa"></i>
         <h3 class="links__titulo">Blog</h3>
-        <span style="color: var(--var-cor-amarelo);">Em Breve</span>
+        <a href="/blog" class="botao">Veja mais</a>
       </div>
       <div class="links__card">
         <i class="icon-ferramenta fa"></i>
@@ -62,6 +63,8 @@ import depoimentosData from '../../public/assets/db/depoimentos.json';
     <Simulador client:visible />
 
     <FAQ />
+
+    <RecentPosts />
 
     <Newsletter />
 

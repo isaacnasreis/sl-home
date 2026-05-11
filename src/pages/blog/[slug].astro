@@ -1,0 +1,205 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/astro/Header.astro';
+import Footer from '../../components/astro/Footer.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => {
+    // Normaliza o id (ex: 'meu-post/index' -> 'meu-post', ou 'meu-post.md' -> 'meu-post')
+    const slug = entry.id.replace(/\/index$/, '').replace(/\.[^/.]+$/, '');
+    return {
+      params: { slug },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout title={`${entry.data.title} | Blog Santo Solar`} description={entry.data.summary}>
+  <Header />
+
+  <main class="article-page">
+    <article class="container article-container">
+      <header class="article-header">
+        <div class="article-meta">
+          <span class="article-date">{new Date(entry.data.pubDate).toLocaleDateString('pt-BR')}</span>
+          {entry.data.categories && entry.data.categories.length > 0 && (
+            <span class="article-category">{entry.data.categories[0]}</span>
+          )}
+        </div>
+        <h1 class="article-title">{entry.data.title}</h1>
+        {entry.data.summary && <p class="article-summary">{entry.data.summary}</p>}
+      </header>
+
+      {entry.data.coverImage && (
+        <div class="article-image">
+          <img src={entry.data.coverImage} alt={entry.data.title} />
+        </div>
+      )}
+
+      <div class="article-content">
+        <Content />
+      </div>
+
+      {entry.data.tags && entry.data.tags.length > 0 && (
+        <footer class="article-tags">
+          <strong>Tags:</strong>
+          <ul>
+            {entry.data.tags.map((tag: string) => (
+              <li>{tag}</li>
+            ))}
+          </ul>
+        </footer>
+      )}
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style is:global>
+  .article-page {
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+  }
+  .article-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--var-cor-branco);
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  }
+  .article-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .article-meta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .article-category {
+    color: var(--var-cor-amarelo);
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .article-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
+    color: var(--var-cor-azul);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  .article-summary {
+    font-size: 1.25rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  .article-image {
+    margin-bottom: 3rem;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+  .article-image img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Estilos para o conteúdo Markdown gerado pelo Astro */
+  .article-content {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #333;
+  }
+  .article-content h2,
+  .article-content h3 {
+    font-family: 'Outfit', sans-serif;
+    color: var(--var-cor-azul);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .article-content p {
+    margin-bottom: 1.5rem;
+  }
+  .article-content ul,
+  .article-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  .article-content li {
+    margin-bottom: 0.5rem;
+  }
+  .article-content a {
+    color: var(--var-cor-laranja);
+    text-decoration: underline;
+  }
+  .article-content img {
+    max-width: 100%;
+    border-radius: var(--radius-md);
+    margin: 2rem 0;
+  }
+  .article-content blockquote {
+    border-left: 4px solid var(--var-cor-amarelo);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #555;
+  }
+  
+  .article-tags {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eaeaea;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .article-tags ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+  .article-tags li {
+    background: #f1f5f9;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    color: var(--var-cor-azul);
+    font-weight: 500;
+  }
+
+  @media screen and (max-width: 768px) {
+    .article-page {
+      padding-top: 6rem;
+    }
+    .article-container {
+      padding: 1.5rem;
+    }
+    .article-title {
+      font-size: 2rem;
+    }
+    .article-summary {
+      font-size: 1.1rem;
+    }
+    .article-content {
+      font-size: 1rem;
+    }
+  }
+</style>

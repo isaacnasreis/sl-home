@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/astro/Header.astro';
+import Footer from '../components/astro/Footer.astro';
+---
+
+<Layout title="Página não encontrada | Santo Solar">
+  <Header />
+
+  <main class="page-404">
+    <div class="container error-container">
+      <div class="error-icon">
+        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="var(--var-cor-amarelo)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+      </div>
+      <h1 class="tituloH2">Oops! Faltou <span style="color: var(--var-cor-amarelo)">Energia</span></h1>
+      <p>A página que você está procurando não foi encontrada ou foi movida. Mas não se preocupe, vamos te ajudar a voltar para a luz!</p>
+      <a href="/" class="botao">Voltar para o Início</a>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-404 {
+    padding-top: 6rem;
+    padding-bottom: 8rem;
+    text-align: center;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+  }
+  .error-container {
+    max-width: 650px;
+    margin: 0 auto;
+  }
+  .error-icon {
+    margin-bottom: 1.5rem;
+    animation: floating 3s ease-in-out infinite;
+  }
+  .tituloH2 {
+    margin-bottom: 1.5rem;
+    color: var(--var-cor-azul);
+    font-size: 2.8rem;
+  }
+  p {
+    font-size: 1.15rem;
+    color: #555;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+
+  @keyframes floating {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+  }
+
+  @media screen and (max-width: 768px) {
+    .page-404 {
+      padding-top: 8rem;
+    }
+    .tituloH2 {
+      font-size: 2rem;
+    }
+  }
+</style>
