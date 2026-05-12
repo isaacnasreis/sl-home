@@ -34,6 +34,12 @@
   height: 2.5rem;
 }
 
+.fa-map {
+  background: center / contain no-repeat url('../img/fa-map.svg');
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 .fa-instagram {
   background: center / contain no-repeat url('../img/fa-instagram.svg');
   width: 2.25rem;

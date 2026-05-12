@@ -7,10 +7,16 @@ import logoImg from '../../assets/img/LogoSemFundo.png';
   <a href="/">
     <Image src={logoImg} alt="Logo Santo Solar" class="logo" />
   </a>
+  <p style="color: var(--var-cor-branco); font-style: italic; font-size: 0.9rem; opacity: 0.9; margin-top: -0.5rem; margin-bottom: 1rem;">
+    Energia solar ao SEU alcance
+  </p>
   <section class="rodape__container">
     <nav class="rodape__nav">
       <a href="/" class="rodape__link">Inicio</a>
       <a href="/blog" class="rodape__link">Blog</a>
+      <a href="/#servicos" class="rodape__link">Serviços</a>
+      <a href="/#projetos" class="rodape__link">Projetos</a>
+      <a href="/#simulador" class="rodape__link">Simulador</a>
       <a href="#rodape" class="rodape__link">Contato</a>
     </nav>
     <div class="rodape__borda"></div>
@@ -22,6 +28,15 @@ import logoImg from '../../assets/img/LogoSemFundo.png';
       <div>
         <i class="fa fa-tel"></i>
         <a href="tel:+5531993600722" class="rodape__tel">55+ (31) 99360-0722</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <i class="fa fa-map"></i>
+        <a href="https://maps.app.goo.gl/LTcnnUS37Vstb67A9" 
+           target="_blank" rel="noopener noreferrer" 
+           class="rodape__endereco"
+           style="color: var(--var-cor-branco); text-decoration: none; font-size: 0.9rem; line-height: 1.4;">
+          Av. Safira, 25 - Dona Rosarinha<br/>Santa Luzia - MG, 33080-300
+        </a>
       </div>
     </div>
   </section>
@@ -80,7 +95,12 @@ import logoImg from '../../assets/img/LogoSemFundo.png';
   flex-direction: column;
   gap: 1rem;
   justify-content: center;
-  width: 300px;
+  width: 350px;
+}
+
+.rodape__endereco:hover {
+  color: var(--var-cor-laranja) !important;
+  text-decoration: underline !important;
 }
 
 @media screen and (max-width: 560px) {

@@ -85,7 +85,7 @@ export default function Projetos({ projetos }: ProjetosProps) {
 
   return (
     <>
-      <section className={`${styles.projetos} container`}>
+      <section className={`${styles.projetos} container`} id="projetos">
         <h2 className={`${styles.projetos__titulo} tituloH2`}>
           Nossos <span style={{ color: 'var(--var-cor-amarelo)' }}>Projetos</span>
         </h2>

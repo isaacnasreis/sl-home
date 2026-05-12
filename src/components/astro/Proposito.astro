@@ -2,12 +2,15 @@
 // Componente de Vídeo do Propósito da Empresa
 ---
 <section class="proposito container" id="proposito">
-  <h2 class="tituloH2" style="text-align: center; margin-bottom: 2rem; color: var(--var-cor-azul);">Nosso <span style="color: var(--var-cor-amarelo)">Propósito</span></h2>
+  <h2 class="tituloH2" style="text-align: center; margin-bottom: 0.75rem; color: var(--var-cor-azul);">Nosso <span style="color: var(--var-cor-amarelo)">Propósito</span></h2>
+  <p style="text-align: center; color: var(--var-cor-azul); margin-bottom: 2.5rem; font-size: 1.1rem; opacity: 0.85; font-weight: 500;">
+    Há anos iluminando e transformando a vida de mais de <strong>300 famílias satisfeitas</strong>.
+  </p>
   <div class="proposito__video-wrapper">
     <iframe
       loading="lazy"
       class="proposito__iframe"
-      src="https://www.youtube.com/embed/NRv6lx6Rk4Y"
+      src="https://www.youtube.com/embed/NRv6lx6Rk4Y?rel=0"
       title="Vídeo institucional: Nosso Propósito - Santo Solar"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -26,13 +29,13 @@
 .proposito__video-wrapper {
   position: relative;
   width: 100%;
-  max-width: 900px;
+  max-width: 1080px;
   margin: 0 auto;
   padding-top: 56.25%; /* Mantém a proporção 16:9 padrão do YouTube */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: #000;
+  background: #fff;
   transition: transform 0.3s ease;
 }
 
