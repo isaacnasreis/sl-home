@@ -57,6 +57,30 @@ const { Content } = await render(entry);
         </footer>
       )}
     </article>
+
+    <!-- Schema.org — BlogPosting para Rich Results -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": entry.data.title,
+      "description": entry.data.summary || "",
+      "datePublished": entry.data.pubDate,
+      "image": entry.data.coverImage ? `https://santosolar.com.br${entry.data.coverImage}` : undefined,
+      "author": {
+        "@type": "Organization",
+        "name": "Santo Solar",
+        "url": "https://santosolar.com.br"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Santo Solar",
+        "url": "https://santosolar.com.br"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": Astro.url.href
+      }
+    })} />
   </main>
 
   <Footer />

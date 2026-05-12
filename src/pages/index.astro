@@ -25,24 +25,24 @@ import depoimentosData from '../../public/assets/db/depoimentos.json';
 <Layout title="Santo Solar - Energia Solar ao seu alcance">
   <Header />
 
-  <main>
+  <main id="main-content">
     <Hero />
 
     {/* Seção Links Rápidos Simplificada */}
     <section class="links container">
       <div class="links__card">
         <i class="icon-cifrao fa"></i>
-        <h3 class="links__titulo">Simulador</h3>
+        <span class="links__titulo">Simulador</span>
         <a href="#simulador" class="botao">Veja mais</a>
       </div>
       <div class="links__card">
         <i class="icon-cafe fa"></i>
-        <h3 class="links__titulo">Blog</h3>
+        <span class="links__titulo">Blog</span>
         <a href="/blog" class="botao">Veja mais</a>
       </div>
       <div class="links__card">
         <i class="icon-ferramenta fa"></i>
-        <h3 class="links__titulo">Serviços</h3>
+        <span class="links__titulo">Serviços</span>
         <a href="#servicos" class="botao">Veja mais</a>
       </div>
     </section>
@@ -79,7 +79,7 @@ import depoimentosData from '../../public/assets/db/depoimentos.json';
       <img src={whatsappIcon.src} alt="ícone whatsapp" width="56" height="56" />
     </a>
     <a href="#cabecalho" aria-label="Voltar ao topo">
-      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M41 12L22.5 30.5L41 49" stroke="#212969" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
     </a>

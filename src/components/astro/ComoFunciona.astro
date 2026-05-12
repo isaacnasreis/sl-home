@@ -1,11 +1,11 @@
 ---
 // Componente demonstrativo "Como Funciona a Energia Solar"
 import { Image } from 'astro:assets';
-import comoFuncionaImg from '../../assets/img/ComoFuncionaAEnergiaSolar.png';
+import comoFuncionaImg from '../../assets/img/ComoFuncionaAEnergiaSolar.webp';
 ---
 
 <section class="comoFunciona container" id="comoFunciona">
-  <h2 class="comoFunciona__titulo tituloH2" style="text-align: center; margin-bottom: 2.5rem; color: var(--var-cor-azul);">Como Funciona</h2>
+  <h2 class="comoFunciona__titulo tituloH2" style="text-align: center; margin-bottom: 2.5rem; color: var(--var-cor-azul);">Como <span style="color: var(--var-cor-amarelo)">Funciona</span></h2>
   
   <div class="comoFunciona__imagem-wrapper">
     <Image 
@@ -13,7 +13,19 @@ import comoFuncionaImg from '../../assets/img/ComoFuncionaAEnergiaSolar.png';
       alt="Diagrama visual de como funciona o sistema de energia solar" 
       class="comoFunciona__img"
       loading="lazy"
+      widths={[600, 900, 1100]}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1100px"
     />
+  </div>
+
+  <!-- Resumo acessível para mobile onde o infográfico fica ilegível -->
+  <div class="comoFunciona__resumo-mobile">
+    <ol>
+      <li><strong>Captação:</strong> Painéis solares captam a luz do sol no telhado.</li>
+      <li><strong>Conversão:</strong> O inversor transforma a energia em corrente alternada.</li>
+      <li><strong>Consumo:</strong> Sua casa usa a energia solar gerada.</li>
+      <li><strong>Créditos:</strong> O excedente vai para a rede e gera créditos na sua conta.</li>
+    </ol>
   </div>
 </section>
 
@@ -37,12 +49,34 @@ import comoFuncionaImg from '../../assets/img/ComoFuncionaAEnergiaSolar.png';
   object-fit: contain;
 }
 
+.comoFunciona__resumo-mobile {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   .comoFunciona {
     margin: 2rem auto 4rem auto;
   }
   .comoFunciona__titulo {
     font-size: 2rem;
+  }
+  .comoFunciona__resumo-mobile {
+    display: block;
+    margin: 1.5rem auto 0;
+    max-width: 600px;
+    padding: 1.5rem;
+    background: var(--var-cor-branco);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+  .comoFunciona__resumo-mobile ol {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--var-cor-preto);
   }
 }
 </style>

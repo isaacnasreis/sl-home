@@ -9,6 +9,7 @@ import logoImg from '../../assets/img/LogoSemFundo.png';
       src={logoImg} 
       alt="Logo Santo Solar" 
       class="logo" 
+      width={280}
       loading="eager"
       fetchpriority="high"
     />
@@ -56,10 +57,10 @@ import logoImg from '../../assets/img/LogoSemFundo.png';
   const menuMobile = document.getElementById('menu-mobile');
   let showMenu = false;
 
-  btnMenu?.addEventListener('click', () => {
-    showMenu = !showMenu;
-    btnMenu.setAttribute('aria-expanded', String(showMenu));
-    btnMenu.setAttribute('aria-label', showMenu ? 'Fechar menu' : 'Abrir menu');
+  function toggleMenu(open?: boolean) {
+    showMenu = open ?? !showMenu;
+    btnMenu?.setAttribute('aria-expanded', String(showMenu));
+    btnMenu?.setAttribute('aria-label', showMenu ? 'Fechar menu' : 'Abrir menu');
     if (showMenu && menuMobile) {
       menuMobile.style.display = "flex";
       setTimeout(() => menuMobile.style.height = "6rem", 10);
@@ -67,6 +68,18 @@ import logoImg from '../../assets/img/LogoSemFundo.png';
       menuMobile.style.height = "0";
       setTimeout(() => menuMobile.style.display = "none", 300);
     }
+  }
+
+  btnMenu?.addEventListener('click', () => toggleMenu());
+
+  // Fechar menu ao clicar em um link
+  menuMobile?.querySelectorAll('.cabecalho__link').forEach(link => {
+    link.addEventListener('click', () => toggleMenu(false));
+  });
+
+  // Fechar menu com tecla Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && showMenu) toggleMenu(false);
   });
 </script>
 

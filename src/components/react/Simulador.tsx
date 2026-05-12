@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import styles from './Simulador.module.css';
 import closeIcon from '../../assets/img/close.svg';
 import energySunIcon from '../../assets/img/energySun.svg';
@@ -29,10 +29,54 @@ export default function Simulador() {
     setShowModal(true);
   };
 
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  // Focus trap: prender foco dentro do modal e fechar com Escape
+  useEffect(() => {
+    if (!showModal) return;
+
+    const modal = modalRef.current;
+    if (!modal) return;
+
+    const focusableElements = modal.querySelectorAll<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstEl = focusableElements[0];
+    const lastEl = focusableElements[focusableElements.length - 1];
+
+    firstEl?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setShowModal(false);
+        return;
+      }
+      if (e.key === 'Tab') {
+        if (e.shiftKey && document.activeElement === firstEl) {
+          e.preventDefault();
+          lastEl?.focus();
+        } else if (!e.shiftKey && document.activeElement === lastEl) {
+          e.preventDefault();
+          firstEl?.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [showModal]);
+
   return (
     <>
       <section className={styles.simulador} id="simulador">
-        <h2 className={`${styles.simulador__titulo} tituloH2`}>Simulador</h2>
+        <h2 className={`${styles.simulador__titulo} tituloH2`}>
+          Nosso <span style={{ color: 'var(--var-cor-amarelo)' }}>Simulador</span>
+        </h2>
         <p className={styles.simulador__descricao}>
           Simule agora para saber quanto você pode economizar utilizando a energia solar
         </p>
@@ -50,7 +94,7 @@ export default function Simulador() {
               type="range"
               min="0"
               max="3999"
-              step="0.01"
+              step="10"
               value={valorPago}
               onChange={(e) => setValorPago(parseFloat(e.target.value))}
             />
@@ -107,7 +151,7 @@ export default function Simulador() {
               type="range"
               min="0"
               max="3999"
-              step="0.01"
+              step="5"
               value={taxaIluminacao}
               onChange={(e) => setTaxaIluminacao(parseFloat(e.target.value))}
             />
@@ -134,7 +178,7 @@ export default function Simulador() {
       </section>
 
       {showModal && (
-        <div className={styles.modalSimuladorResultado} role="dialog" aria-modal="true">
+        <div className={styles.modalSimuladorResultado} role="dialog" aria-modal="true" aria-label="Resultado da Simulação" ref={modalRef}>
           <section className={styles.resultadoSimuladorContainer}>
             <button className={styles.fecharModalResultadoSimulador} onClick={() => setShowModal(false)} aria-label="Fechar resultado">
               <img src={closeIcon.src} alt="fechar" />

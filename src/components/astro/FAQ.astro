@@ -3,7 +3,7 @@
 ---
 
 <section class="duvidas container">
-  <h2 class="duvidas__titulo tituloH2">Dúvidas frequentes</h2>
+  <h2 class="duvidas__titulo tituloH2">Dúvidas <span style="color: var(--var-cor-amarelo)">frequentes</span></h2>
   
   <div class="duvidas__container">
     <div class="duvidas__perguntas">
@@ -99,6 +99,7 @@
         {/* F-03: Honeypot anti-spam — campo oculto para bots */}
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
         <input type="hidden" name="_captcha" value="false" />
+        <label for="nomeDuvidas" class="sr-only">Nome</label>
         <input id="nomeDuvidas" name="nomeDuvidas" type="text" placeholder="Nome" required aria-required="true" />
         
         <label for="emailDuvidas" class="sr-only">Email</label>

@@ -3,6 +3,7 @@ backend:
   repo: isaacnasreis/sl-home
   branch: main
   use_pkce: true
+  # app_id é o OAuth App Client ID público (não é um secret)
   app_id: Ov23liGlQjcuUqd2BSZR
 
 media_folder: "public/images/blog"

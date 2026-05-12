@@ -30,7 +30,9 @@ export default function DepoimentosSlider({ depoimentos }: DepoimentosSliderProp
 
   return (
     <section className={`${styles.depoimentos} container`}>
-      <h2 className={`${styles.depoimentos__titulo} tituloH2`}>Cliente e depoimentos</h2>
+      <h2 className={`${styles.depoimentos__titulo} tituloH2`}>
+        Clientes e <span style={{ color: 'var(--var-cor-amarelo)' }}>Depoimentos</span>
+      </h2>
       <div className={styles.depoimentos__container}>
         <button className={styles['seta-esquerda']} onClick={prev} aria-label="Depoimento anterior">
           <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">

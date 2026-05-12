@@ -47,41 +47,6 @@
   height: 2.25rem;
 }
 
-.seta-esquerda,
-.seta-direita {
-  border: none;
-  background: none;
-  cursor: pointer;
-  transform: rotate(0deg);
-}
-
-.seta-esquerda svg,
-.seta-direita svg {
-  width: 70%;
-}
-
-.seta-direita {
-  transform: rotate(180deg);
-}
-
-.raio {
-  display: inline-block;
-  background: url('../img/flash.svg') no-repeat center / contain;
-  width: 2rem;
-  height: 2rem;
-}
-.lampada {
-  display: inline-block;
-  background: url('../img/bulb.svg') no-repeat center / contain;
-  width: 2rem;
-  height: 2rem;
-}
-.painel {
-  display: inline-block;
-  background: url('../img/panels.svg') no-repeat center / contain;
-  width: 2rem;
-  height: 2rem;
-}
 
 @media screen and (max-width: 768px) {
   .fa-wpp {

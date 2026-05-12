@@ -111,6 +111,25 @@ button {
   outline: none;
 }
 
+/* ── Acessibilidade: Skip to Content ── */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 10000;
+  background: var(--var-cor-amarelo);
+  color: var(--var-cor-azul);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+
+.skip-to-content:focus {
+  top: 1rem;
+}
+
 /* ── UX: Estados de botão (disabled, sucesso, erro) ── */
 .botao:disabled,
 .botao[aria-disabled="true"] {
@@ -178,8 +197,7 @@ button {
   }
 
   .logo {
-    height: 7rem;
-    height: 7rem;
+    max-height: 7rem;
   }
 
   .tituloH2 {
@@ -215,7 +233,7 @@ button {
 
 }
 
-@media screen and (max-width: 450px) {}
+
 
 @media screen and (max-width: 375px) {
   .container {

@@ -4,13 +4,14 @@ export interface Props {
   description?: string;
   image?: string;
   url?: string;
+  canonicalUrl?: string;
 }
 
 const {
   title = "Santo Solar - Energia Solar ao seu alcance",
   description = "Santo Solar. Transforme a luz do sol em economia. Descubra como reduzir até 95% na sua conta de luz com energia solar fotovoltaica.",
   image = "https://santosolar.com.br/assets/img/og-image.png",
-  url = "https://santosolar.com.br/"
+  url = Astro.url.href
 } = Astro.props;
 ---
 
@@ -19,7 +20,7 @@ const {
 <title>{title}</title>
 
 <meta name="description" content={description} />
-<meta name="keywords" content="Energia solar, Economia na conta de luz, Santa Luzia, Fotovoltaica, Instalação solar" />
+<meta name="author" content="Santo Solar" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href={url} />
 <meta property="og:locale" content="pt_BR" />
